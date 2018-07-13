@@ -10,6 +10,42 @@
   </head>
 
   <body>
+    <center>
+    <h1>Music APP</h1>
+    <a href=" <%= users_url %> ">main users page</a>
+    <br>
+
+    <a href=" <%= bands_url %> ">Look at the BandZZZZZZZ</a>
+
+    <br>
+
+    <% if current_user.nil? %>
+
+    <a href="<%= new_user_url %>">sign up</a>
+    <br>
+    <a href=" <%= new_session_url %> ">login</a>
+
+    <% else %>
+
+    <ul>
+      <li>Logged in as: <%= current_user.email %></li>
+      <li>
+        <form action="<%= session_url %>" method="POST">
+
+          <input type="hidden"
+                 name="authenticity_token"
+                 value="<%= form_authenticity_token %>">
+
+          <input type="hidden" value="delete" name="_method" />
+          <input type="submit" value="Logout" />
+        </form>
+      </li>
+    </ul>
+
+  <% end %>
+
+
     <%= yield %>
+  </center>
   </body>
 </html>

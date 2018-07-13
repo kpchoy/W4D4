@@ -1,0 +1,9 @@
+<h1>Please enter a band that you would like to add to our databse</h1>
+
+<form action=" <%= bands_url %> " method="post">
+  <input type="hidden" name="authenticity_token" value=" <%= form_authenticity_token %> ">
+
+  <label for="name">enter a band:</label>
+  <input id="name" type="text" name="band[name]">
+
+</form>
